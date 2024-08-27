@@ -1,18 +1,51 @@
 import bcrypt from "bcrypt";
+import prisma from "../lib/prisma.js";
 
 export const register = async (req, res) => {
-    const { userName, email, password } = req.body;
+    const { username, email, password } = req.body;
+    try {
+        // Hash the Password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log(hashedPassword);
 
-    // Hash the Password
+        // Create a New User & Save it to DB
+        const newUser = await prisma.user.create({
+            data: {
+                username, email, password: hashedPassword,
+            }
+        });
 
-    // Create a New User & Save it to DB
-    const hashedPassword = await bcrypt.hash(password, 10);
+        console.log(newUser);
 
-    console.log(hashedPassword);
+        res.status(201).json({ message: "User created successfully." });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Failed to create user" });
+    }
 };
 
-export const login = (req, res) => {
-    // DB operations
+export const login = async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        // Check if the user exists or not
+        const user = await prisma.user.findUnique({ where: { username } }); // Where username = username
+
+        if (!user) res.status(401).json({ message: "Inavlid Credentials!" }); // 401 Unauthorized
+
+        // Check if the user's password is correct
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) return res.status(401).json({}); // 401 Unauthorized
+
+        // Generate a Cookie Token
+
+        res.setHeader("Set-Cookie", "test=" + "myValue");
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Failed to login!" });
+    }
 };
 
 export const logout = (req, res) => {

@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import postRoute from './routes/post.route.js';
 import authRoute from './routes/auth.route.js';
 
+import { config } from 'dotenv';
+config({ path: '.env' });
+
 const PORT = 8800;
 
 const app = express();
