@@ -1,0 +1,138 @@
+@import "../../responsive.scss";
+
+nav {
+  height: 125px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include md {
+    justify-content: center;
+  }
+
+  a {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      font-weight: bold;
+    }
+
+    @include sm {
+      display: none;
+    }
+  }
+
+  .left {
+    flex: 3; // Three Units
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    img {
+      width: 120px;
+      height: 80px;
+
+      @include sm {
+        width: 60px;
+        height: 40px;
+      }
+    }
+  }
+
+  span {
+    @include md {
+      display: none;
+    }
+
+    @include sm {
+      display: initial;
+    }
+  }
+
+  .right {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 50px;
+    background-color: var(--accent-color);
+    height: 100%;
+
+    @include md {
+      gap: 12px;
+    }
+
+    a {
+      padding: 12px 15px;
+      margin: 20px;
+
+      @include md {
+        margin: 8px;
+        padding: 3px 5px;
+      }
+    }
+
+    .sign-up {
+      background-color: var(--tertiary-color);
+      border-radius: 3px;
+      padding: 6px 8px;
+    }
+
+    .menu-icon {
+      display: none;
+      z-index: 999;
+      @include sm {
+        display: initial;
+        img {
+          width: 30px;
+          transition: all 0.5s ease;
+          border-radius: 30%;
+          &:hover {
+            background-color: var(--primary-color-opacity);
+          }
+        }
+      }
+    }
+
+    @include md {
+      background-color: transparent;
+    }
+
+    .menu {
+      background-color: var(--primary-color);
+      display: none;
+      position: absolute;
+      height: 100vh;
+      width: 50%;
+      top: 0px;
+      right: -50%;
+      transition: right 0.5s ease;
+
+      @include sm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 26px;
+
+        &.clicked {
+          right: 0;
+        }
+
+        a {
+          display: initial;
+        }
+      }
+    }
+  }
+}

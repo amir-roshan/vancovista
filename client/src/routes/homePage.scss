@@ -1,0 +1,66 @@
+@import "../responsive.scss";
+.homepage {
+  display: flex;
+  height: 100%;
+
+  .text-container {
+    flex: 3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .wrapper {
+      padding: 135px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include sm {
+        padding: 10px;
+        border-radius: 10px;
+      }
+    }
+
+    .title {
+      font-size: 45px;
+      margin-bottom: 45px;
+    }
+
+    .achievements {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      @include sm {
+        text-align: center;
+        justify-content: space-between;
+        margin-top: 50px;
+        flex-direction: column;
+        gap: 15px;
+        .achievement {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          h2 {
+            margin: 0 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .img-container {
+    flex: 2;
+    height: 100%;
+    background-color: var(--accent-color);
+    position: relative;
+    padding: 160px 0;
+    img {
+      width: 110%;
+      position: absolute;
+      right: 0px;
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+}

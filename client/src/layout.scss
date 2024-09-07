@@ -1,0 +1,35 @@
+@import "./responsive.scss";
+
+:root {
+  --primary-color: #80bcbd;
+  --primary-color-opacity: #80bcbdc1;
+  --secondary-color: #aad9bb;
+  --tertiary-color: #d5f0c1;
+  --accent-color: #f9f7c9;
+}
+
+.layout {
+  height: 100vh;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+
+  @include lg {
+    max-width: 1280px;
+  }
+
+  @include md {
+    max-width: 868px;
+  }
+
+  @include sm {
+    max-width: 540px;
+  }
+
+  .content {
+    background-color: var(--secondary-color);
+    flex: 1;
+  }
+}

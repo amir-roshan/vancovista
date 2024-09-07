@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from 'body-parser';
+import cookieParser from "cookie-parser";
 
 import postRoute from './routes/post.route.js';
 import authRoute from './routes/auth.route.js';
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
