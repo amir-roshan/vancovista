@@ -37,8 +37,8 @@
   margin-top: 0px;
   display: flex;
   flex-direction: row;
-  border: 2px solid var(--primary-color);
   text-align: center;
+  border: 2px solid var(--primary-color);
 
   @include sm {
     display: grid;
@@ -64,13 +64,13 @@
     }
 
     @include sm {
+      margin-bottom: 3px;
+      padding: 20px;
       &:nth-child(2),
       &:nth-child(4),
       &:nth-child(6) {
         width: 100%;
       }
-      margin-bottom: 3px;
-      padding: 20px;
     }
   }
   input:focus {
