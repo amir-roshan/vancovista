@@ -1,8 +1,14 @@
+import { listData } from "../../lib/dummyData";
 import "./listPage.scss";
-
 const ListPage = () => {
+    const data = listData;
+
     return (
-        <div>ListPage</div>
+        <>
+            <div className="listPage">
+
+            </div>
+        </>
     );
 };
 
